@@ -10,7 +10,7 @@ import android.widget.TextView
 import net.eviera.cursokotlindevslopes.udemykotlinandroidcoderswag.R
 import net.eviera.cursokotlindevslopes.udemykotlinandroidcoderswag.model.Category
 
-class CategoryRecycleAdapter(val context: Context, val categories: List<Category>) : RecyclerView.Adapter<CategoryRecycleAdapter.Holder>() {
+class CategoryRecycleAdapter(val context: Context, val categories: List<Category>, val itemClicked: (Category) -> Unit) : RecyclerView.Adapter<CategoryRecycleAdapter.Holder>() {
 
     override fun onBindViewHolder(holder: Holder?, position: Int) {
         holder?.bindCategory(categories[position], context)
@@ -23,17 +23,24 @@ class CategoryRecycleAdapter(val context: Context, val categories: List<Category
     //Cuando se necesita crear un nuevo viewholder
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): Holder {
         val view = LayoutInflater.from(context).inflate(R.layout.category_list_item, parent, false)
-        return Holder(view)
+        return Holder(view, itemClicked)
     }
 
-    inner class Holder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
-        val categoryImage = itemView?.findViewById<ImageView>(R.id.categoryImage)
-        val categoryName = itemView?.findViewById<TextView>(R.id.categoryName)
+    inner class Holder(itemView: View?, val itemClicked: (Category) -> Unit) : RecyclerView.ViewHolder(itemView) {
+        private val categoryImage = itemView?.findViewById<ImageView>(R.id.categoryImage)
+        private val categoryName = itemView?.findViewById<TextView>(R.id.categoryName)
 
         fun bindCategory(category: Category, context: Context) {
             val resourceId = context.resources.getIdentifier(category.image, "drawable", context.packageName)
             categoryImage?.setImageResource(resourceId)
             categoryName?.text = category.title
+
+            //Para implementar un onclick
+            itemView.setOnClickListener {
+                itemClicked(category)
+            }
+
+
         }
     }
 }
