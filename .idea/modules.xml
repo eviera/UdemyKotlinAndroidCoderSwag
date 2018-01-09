@@ -3,9 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/UdemyKotlinAndroidCoderSwag.iml" filepath="$PROJECT_DIR$/UdemyKotlinAndroidCoderSwag.iml" />
-      <module fileurl="file://C:\Users\emi\workspace\UdemyKotlinAndroidCoderSwag\UdemyKotlinAndroidCoderSwag.iml" filepath="C:\Users\emi\workspace\UdemyKotlinAndroidCoderSwag\UdemyKotlinAndroidCoderSwag.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://C:\Users\emi\workspace\UdemyKotlinAndroidCoderSwag\app\app.iml" filepath="C:\Users\emi\workspace\UdemyKotlinAndroidCoderSwag\app\app.iml" />
     </modules>
   </component>
 </project>
