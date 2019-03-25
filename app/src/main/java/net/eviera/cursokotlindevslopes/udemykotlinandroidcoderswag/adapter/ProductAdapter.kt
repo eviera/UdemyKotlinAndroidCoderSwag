@@ -12,23 +12,23 @@ import net.eviera.cursokotlindevslopes.udemykotlinandroidcoderswag.model.Product
 
 class ProductAdapter(val context: Context, val products: List<Product>) : RecyclerView.Adapter<ProductAdapter.Holder>() {
 
-    override fun onBindViewHolder(holder: Holder?, position: Int) {
-        holder?.bind(products[position], context)
+    override fun onBindViewHolder(holder: Holder, position: Int) {
+        holder.bind(products[position], context)
     }
 
     override fun getItemCount(): Int {
         return products.count()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): Holder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val view = LayoutInflater.from(context).inflate(R.layout.product_list_item, parent, false)
         return Holder(view)
     }
 
-    inner class Holder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
-        private val productImage = itemView?.findViewById<ImageView>(R.id.productImage)
-        private val productName =  itemView?.findViewById<TextView>(R.id.productName)
-        private val productPrice =  itemView?.findViewById<TextView>(R.id.productPrice)
+    inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val productImage = itemView.findViewById<ImageView>(R.id.productImage)
+        private val productName =  itemView.findViewById<TextView>(R.id.productName)
+        private val productPrice =  itemView.findViewById<TextView>(R.id.productPrice)
 
         fun bind(product: Product, context: Context) {
             val resourceId = context.resources.getIdentifier(product.image, "drawable", context.packageName)
